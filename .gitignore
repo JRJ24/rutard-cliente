@@ -41,3 +41,8 @@ example
 # generated native folders
 /ios
 /android
+
+.env
+# Firebase (never commit)
+google-services.json
+GoogleService-Info.plist

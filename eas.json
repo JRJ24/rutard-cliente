@@ -1,0 +1,51 @@
+{
+  "cli": {
+    "version": ">=21.0.2",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "environment": "development",
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "IOS_APS_ENVIRONMENT": "development",
+        "EXPO_PUBLIC_API_URL": "https://api.larutard.com.do/api/v1",
+        "EXPO_PUBLIC_SOCKET_URL": "https://api.larutard.com.do"
+      }
+    },
+
+    "preview": {
+      "environment": "preview",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "IOS_APS_ENVIRONMENT": "production",
+        "EXPO_PUBLIC_API_URL": "https://api.larutard.com.do/api/v1",
+        "EXPO_PUBLIC_SOCKET_URL": "https://api.larutard.com.do"
+      }
+    },
+
+    "production": {
+      "environment": "production",
+      "autoIncrement": true,
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "IOS_APS_ENVIRONMENT": "production",
+        "EXPO_PUBLIC_API_URL": "https://api.larutard.com.do/api/v1",
+        "EXPO_PUBLIC_SOCKET_URL": "https://api.larutard.com.do"
+      }
+    }
+  },
+
+  "submit": {
+    "production": {}
+  }
+}
