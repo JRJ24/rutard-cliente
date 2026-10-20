@@ -38,7 +38,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
 
   android: {
-    package: 'do.com.flypack.rutardcliente',
+    // En Android no puede empezar por `do`: es palabra reservada de Java y
+    // Gradle rechaza el namespace (igual que el driver: com.flypack.rutardriver).
+    package: 'com.flypack.rutardcliente',
     googleServicesFile: process.env.GOOGLE_SERVICES_JSON ?? './google-services.json',
     predictiveBackGestureEnabled: false,
     adaptiveIcon: {
@@ -106,11 +108,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     reactCompiler: true,
   },
 
+  owner: 'jdg-services',
   extra: {
     EXPO_PUBLIC_API_URL: process.env.EXPO_PUBLIC_API_URL,
     EXPO_PUBLIC_SOCKET_URL: process.env.EXPO_PUBLIC_SOCKET_URL,
     EXPO_PUBLIC_GOOGLE_MAPS_ANDROID_API_KEY: process.env.EXPO_PUBLIC_GOOGLE_MAPS_ANDROID_API_KEY,
     EXPO_PUBLIC_GOOGLE_MAPS_IOS_API_KEY: process.env.EXPO_PUBLIC_GOOGLE_MAPS_IOS_API_KEY,
-    // `npx eas-cli@latest init` agrega aqui `eas: { projectId }`.
+    eas: {
+      projectId: '38725f3d-3e51-4c27-8753-c27f439767e3',
+    },
   },
 });

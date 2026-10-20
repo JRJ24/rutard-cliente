@@ -34,10 +34,12 @@ if (!ip) {
   console.error('No encontre una IP de red local. Conecta la PC al Wi-Fi.');
   process.exit(1);
 }
-console.log(`\n  Metro en http://${ip}:8081  (el telefono debe estar en el mismo Wi-Fi)\n`);
+// 8080 por defecto (el 8081 lo usa otro proceso en esta PC); RCT_METRO_PORT lo cambia.
+const port = process.env.RCT_METRO_PORT || '8080';
+console.log(`\n  Metro en http://${ip}:${port}  (el telefono debe estar en el mismo Wi-Fi)\n`);
 
 const extra = process.argv.slice(2).filter((a) => /^[-\w=]+$/.test(a)).join(' ');
-const child = spawn(`npx expo start --dev-client ${extra}`.trim(), {
+const child = spawn(`npx expo start --dev-client --port ${port} ${extra}`.trim(), {
   stdio: 'inherit',
   shell: true,
   env: { ...process.env, REACT_NATIVE_PACKAGER_HOSTNAME: ip },
